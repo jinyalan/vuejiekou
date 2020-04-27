@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用Vue调接口</title>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script src="vue-resouce.js" type="text/javascript" charset="utf-8"></script>
+		<!--所调的接口-->
+	</head>
+	<body>
+		<div id="app">
+			{{name}}
+			<input type="button" value="获取数据" @click="getdata()"/>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				name:'靳亚兰',
+			},
+			methods:{
+				getdata(){
+//					promise.then() 箭头函数  模板引擎class类--es6的新特性：
+//					promise.then(function(res){
+//						console.log(res);
+//					})
+//					等价于回调的箭头函数
+//					promise.then((res)=>{
+//						console.log(res);
+//					})
+
+                //注意：get请求:参数写在{params:{参数}}里面
+//					this.$http.post("https://route.showapi.com/852-2?showapi_appid: ''&count:&showapi_sign: ''enctype=multipart/form-data").then(function(res){
+//						console.log(res);
+//					})
+//				注意：get请求:参数写在{params:{参数}}里面
+					this.$http.get("https://route.showapi.com/852-2",{
+						params:{
+							showapi_appid: '',
+							count:,  //秘钥
+							showapi_sign: ''
+						}
+					}).then(res=>{
+						console.log(res);
+					})
+				}
+			}
+		})
+	</script>
+</html>

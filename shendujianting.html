@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>监听</title>
+		<script src="" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{a}}</p>
+			<p>{{b}}</p>
+			<p>{{obj.name}}</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				a:1111,
+				b:2222,
+				obj:{
+					name:"靳亚兰",
+					age:22
+				}
+			}
+		})
+		vm.$watch('obj',function(){
+			alert(this.object.name+"发生了变化");
+			this.b=this.a+10;
+		}),{
+			deep:true
+		}
+		)
+		document.onclick=function(){
+			vm.name="森";
+		}
+		
+		
+	</script>
+</html>

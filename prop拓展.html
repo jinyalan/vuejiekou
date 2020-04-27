@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>prop</title>
+		<script type="text/javascript" src="js/vue.js"></script>
+	</head>
+	<body>
+	<!--挂载-->
+		<div id="app">
+			<blog-post post-title="靳亚兰" hobby=0 auther="{a:'aaa'}"></blog-post>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		Vue.component('BlogPost',{
+			props:{
+				postTitle: String,
+				auther:Object,
+				hobby: {
+					type: Number,
+					default: 0,
+					required: true,
+					valodator: function(value){
+						return value => 0
+					}
+				}
+			},
+			template:`
+				<div>
+					<h1>{{postTitle}}</h1>
+					<h2>{{hobby}}</h2>
+					<h4>{{auther}}</h4>
+				</div>
+			`
+		})
+//		挂载
+		new Vue({
+			el:"#app",
+		})
+	</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生命周期（或者叫钩子函数）</title>
+		<script type="text/javascript" src="js/vue.js"></script>
+	</head>
+		<body>
+		<!--挂载-->
+		<div id="app">
+			{{message}}
+			<input type="button" value="更新" onclick="change()"/>
+			<input type="button" value="销毁" onclick="destroy()"/>
+			<!--<input type="button" value="更新" onclick="change()"/>-->
+		</div>
+	</body>
+	<script type="text/javascript">
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				message:'今天的天气真好！'
+			},
+			beforeCreate(){
+					alert('实例创建前');
+			},
+			created(){
+					alert('实例创建完成');
+			},
+			beforeMount(){
+					alert('实例挂载前');
+			},
+			mounted(){
+					alert('实例挂载完成');
+			},
+			beforeUpdate(){
+					alert('更新前');
+			},
+			updated(){
+					alert('更新完成');
+			},
+			beforeDestroy(){
+					alert('销毁前');
+			},
+			destroyed(){
+					alert('销毁完成');
+			}
+		})
+		function change(){
+			vm.message="更新后的消息"
+		}
+		function destroy(){
+			vm.$destroy();
+		}
+	</script>
+</html>

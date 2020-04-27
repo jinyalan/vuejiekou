@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>通过Vue动态添加class</title>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<style type="text/css">
+			.link{
+				font-size: 32px;
+				
+			}
+			.text{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<a href="#" class="link" :class="{text:daaclass}">星期四</a>
+			<!--<a href="javascript:;"></a>  和上面的a标签有区别，点击之后不改变 -->
+		</div>
+	</body>
+	<script type="text/javascript">
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				addclass:true,
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数据绑定</title>
+		<script type="text/javascript" src=""></script>
+	</head>
+	<body>
+	<!--挂载-->
+		<div id="app">
+			{{message}}
+			<input type="text" name="" id="" v-model="message"/>
+			{{message}}
+		</div>
+	</body>
+	
+	<!--双向绑定(input里面写什么后面就写什么)-->
+	<script type="text/javascript">
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				message:'',
+			}
+		})
+		
+	</script>
+</html>
+

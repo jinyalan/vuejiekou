@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jsonp请求</title>
+		<script src="" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{news}}
+			<input type="text" v-model="word" @keyup="getjsonp()"/>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:'#app',
+				data:{
+					news: '点击进行搜索：'
+					word:'',
+					Bdata:[],
+				},
+				methods:{
+					getjsonp(){
+						this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+						params:{
+							wd:this.word,
+						},
+						jsonp:'cb'
+					}).then(res=>{
+						this.Bdata=res.body.s;
+						console.log(res);
+					}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

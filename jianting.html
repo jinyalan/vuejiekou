@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>监听</title>
+		<!--此代码主要是用在搜索改变数据中-->
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{a}}</p>
+			<p>{{b}}</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				a:1111,
+				b:2222
+			}
+		})
+		vm.$watch('a',function(){
+			alert("a发生了变化");
+			this.b=this.a+10;
+		})
+		document.onclick=function(){
+			vm.a=1234;
+		}
+		
+		
+	</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>axios</title>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--所调的接口-->
+	</head>
+	<body>
+		<div id="app">
+			{{name}}
+			<input type="button" value="获取数据" @click="getdata()"/>
+			<ul class="box" v-for="(item，index) in dataList">
+				<li>
+					<img :src="item.img"/>
+					<h3></h3>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				dataList:[],
+			},
+			methods:{
+				getdata(){
+//			ajax写的方法:
+//					$.ajax({
+//						type:"get",
+//						url:"地址",
+//						async:true
+//						success:function(res){
+//							console.log(res)
+//						}
+//					});
+//					axios与ajax差不多,也不一样
+					axios({
+						method:'get',
+						
+						data:{
+							
+						},
+						url:'https://route.showapi.com/852-2',
+					}).then(res=>{
+//						console.log(res);
+						this.dataList=res.data.showpi_res_body.contentlist;
+						console.log(this.dataList);
+					})
+//			另一种写法:
+//					let formdata = new FormData();
+//					formdata.append('showapi_appid','')
+//					formdata.append('count','')
+//					formdata.append('showapi_sign','')
+//					axios({
+//						method:'post',
+//						url: 'https://route.showapi.com/852-2',
+//						responseType: 'json',
+//						data: formdata
+//					}).then(res=>{
+//						console.log(res);
+//					})
+				}
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>过滤</title>
+		<script src="" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{shuzi | aa}}
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.filter('aa',function(val){
+			return val <10 ? '0'+val : 'num'+val;
+		})
+		
+//		挂载
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				shuzi:12
+			}
+		})
+	</script>
+</html>
